@@ -10,7 +10,7 @@
   --blue-dark: #1757a5;
   --green: #1f9a63;
   --red: #de4d3c;
-  --cell-size: min(7.2vw, 46px);
+  --cell-size: min(6.2vw, 44px);
 }
 
 * {
@@ -141,7 +141,7 @@ h2 {
 
 .game-layout {
   display: grid;
-  grid-template-columns: minmax(220px, 300px) minmax(420px, 1fr) minmax(230px, 300px);
+  grid-template-columns: minmax(210px, 285px) minmax(360px, 1fr) minmax(225px, 300px);
   gap: 14px;
   align-items: start;
 }
@@ -257,6 +257,17 @@ h2 {
   font-weight: 900;
 }
 
+.board-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.picker-toggle {
+  display: none;
+  min-height: 42px;
+}
+
 .color-grid {
   display: grid;
   grid-template-columns: repeat(var(--cols), var(--cell-size));
@@ -268,7 +279,7 @@ h2 {
   border: 2px solid #b9c6d4;
   border-radius: 8px;
   overflow: auto;
-  touch-action: none;
+  touch-action: pan-y;
 }
 
 .cell {
@@ -551,22 +562,49 @@ h2 {
 
 @media (max-width: 1080px) {
   :root {
-    --cell-size: min(8.1vw, 42px);
+    --cell-size: min(6.6vw, 38px);
   }
 
   .game-layout {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
   }
 
   .canvas-zone {
-    grid-column: 1 / -1;
+    grid-column: 1;
     grid-row: 1;
+  }
+
+  .tool-panel {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .picture-panel {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .picture-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .picker-toggle {
+    display: grid;
+    place-items: center;
+  }
+
+  .game-layout.picker-collapsed {
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
+  }
+
+  .game-layout.picker-collapsed .picture-panel {
+    display: none;
   }
 }
 
 @media (max-width: 720px) {
   :root {
-    --cell-size: min(10vw, 36px);
+    --cell-size: min(8.5vw, 32px);
   }
 
   .app-shell {
@@ -598,6 +636,24 @@ h2 {
   .canvas-zone {
     grid-column: auto;
     grid-row: auto;
+  }
+
+  .tool-panel,
+  .picture-panel {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .game-layout.picker-collapsed {
+    grid-template-columns: 1fr;
+  }
+
+  .color-grid {
+    justify-content: start;
+  }
+
+  .picture-list {
+    grid-template-columns: 1fr;
   }
 
   .grade-tabs {

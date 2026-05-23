@@ -416,6 +416,7 @@ const state = {
   selectedPictureId: null,
   selectedColor: null,
   drawing: false,
+  pickerCollapsed: false,
   activeQuestion: null,
   activeView: "game",
   progress: loadProgress(),
@@ -433,6 +434,7 @@ const els = {
   resetProgress: document.querySelector("#reset-progress"),
   showPrizes: document.querySelector("#show-prizes"),
   backToGame: document.querySelector("#back-to-game"),
+  togglePicturePicker: document.querySelector("#toggle-picture-picker"),
   pointsChip: document.querySelector("#points-chip"),
   title: document.querySelector("#picture-title"),
   subtitle: document.querySelector("#picture-subtitle"),
@@ -658,6 +660,9 @@ function renderAll() {
 function renderView() {
   els.gameView.hidden = state.activeView !== "game";
   els.prizePage.hidden = state.activeView !== "prizes";
+  els.gameView.classList.toggle("picker-collapsed", state.pickerCollapsed && !!state.selectedPictureId);
+  els.togglePicturePicker.hidden = !state.selectedPictureId;
+  els.togglePicturePicker.textContent = state.pickerCollapsed ? "Pictures" : "Hide";
 }
 
 function renderPoints() {
@@ -838,6 +843,7 @@ function selectPicture(id) {
   state.selectedPictureId = id;
   state.selectedColor = null;
   state.activeQuestion = null;
+  state.pickerCollapsed = window.matchMedia("(max-width: 1080px)").matches;
   els.feedback.textContent = "";
   els.status.textContent = `Selected ${picture.name}. Unlock a color to begin.`;
   renderAll();
@@ -920,13 +926,10 @@ function answerQuestion(answer) {
 }
 
 function fillCell(cell) {
+  if (!canFillCell(cell)) return;
+
   const picture = currentPicture();
-  if (!picture || !state.selectedColor || !cell || !cell.classList.contains("cell")) return;
-  if (cell.dataset.number === "." || cell.dataset.number !== state.selectedColor) return;
-
   const saved = pictureState(picture.id);
-  if (!saved.unlockedColors.includes(state.selectedColor)) return;
-
   saved.filled[cell.dataset.index] = state.selectedColor;
   cell.classList.add("filled");
   cell.style.background = colors[state.selectedColor].hex;
@@ -934,6 +937,13 @@ function fillCell(cell) {
   renderBoard();
   renderPictureList();
   renderGradeTabs();
+}
+
+function canFillCell(cell) {
+  const picture = currentPicture();
+  if (!picture || !state.selectedColor || !cell || !cell.classList.contains("cell")) return false;
+  if (cell.dataset.number === "." || cell.dataset.number !== state.selectedColor) return false;
+  return pictureState(picture.id).unlockedColors.includes(state.selectedColor);
 }
 
 function pickRandomPicture() {
@@ -956,6 +966,7 @@ function resetProgress() {
   state.selectedPictureId = null;
   state.selectedColor = null;
   state.activeQuestion = null;
+  state.pickerCollapsed = false;
   state.activeView = "game";
   saveProgress();
   savePoints();
@@ -1012,13 +1023,22 @@ els.backToGame.addEventListener("click", () => {
   state.activeView = "game";
   renderAll();
 });
+els.togglePicturePicker.addEventListener("click", () => {
+  state.pickerCollapsed = !state.pickerCollapsed;
+  renderAll();
+});
 els.redeemYes.addEventListener("click", redeemPrize);
 els.redeemNo.addEventListener("click", closeRedeem);
 
 els.grid.addEventListener("pointerdown", (event) => {
+  const cell = event.target.closest(".cell");
+  if (!canFillCell(cell)) {
+    state.drawing = false;
+    return;
+  }
   event.preventDefault();
   state.drawing = true;
-  fillCell(event.target.closest(".cell"));
+  fillCell(cell);
 });
 
 els.grid.addEventListener("pointermove", (event) => {
