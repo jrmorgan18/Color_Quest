@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Color Quest</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="top-bar">
+        <div>
+          <h1>Color Quest</h1>
+          <p id="status-line">Pick a picture, answer questions, and color the matching squares.</p>
+        </div>
+        <div class="top-actions">
+          <div id="points-chip" class="points-chip">0 pts</div>
+          <button id="show-prizes" class="secondary-action" type="button">Prizes</button>
+          <button id="random-picture" class="primary-action" type="button">Computer Pick</button>
+          <button id="reset-progress" class="icon-action" type="button" aria-label="Reset progress" title="Reset progress">
+            <span aria-hidden="true">R</span>
+          </button>
+        </div>
+      </header>
+
+      <section id="game-view" class="game-layout" aria-label="Color by number game">
+        <aside class="picture-panel" aria-label="Picture choices">
+          <div class="panel-heading">
+            <h2>Pictures</h2>
+            <div class="grade-tabs" id="grade-tabs" role="tablist" aria-label="Difficulty">
+              <button type="button" data-grade="K">K</button>
+              <button type="button" data-grade="1">1</button>
+              <button type="button" data-grade="2">2</button>
+              <button type="button" data-grade="3">3</button>
+              <button type="button" data-grade="4">4</button>
+              <button type="button" data-grade="5">5</button>
+            </div>
+          </div>
+          <div id="picture-list" class="picture-list"></div>
+        </aside>
+
+        <section class="canvas-zone" aria-label="Coloring board">
+          <div class="board-header">
+            <div>
+              <h2 id="picture-title">Choose a picture</h2>
+              <p id="picture-subtitle">Kindergarten pictures are open first.</p>
+            </div>
+            <div id="progress-chip" class="progress-chip">0%</div>
+          </div>
+          <div id="grid" class="color-grid" aria-label="Coloring cells"></div>
+        </section>
+
+        <aside class="tool-panel" aria-label="Colors and questions">
+          <section>
+            <h2>Colors</h2>
+            <div id="palette" class="palette"></div>
+          </section>
+          <section class="question-box" id="question-box" hidden>
+            <h2 id="question-title">Unlock color</h2>
+            <p id="question-text"></p>
+            <div id="answers" class="answers"></div>
+            <p id="answer-feedback" class="answer-feedback" aria-live="polite"></p>
+          </section>
+          <section class="legend-box">
+            <h2>Board Key</h2>
+            <div id="legend" class="legend"></div>
+          </section>
+        </aside>
+      </section>
+
+      <section id="prize-page" class="prize-page" hidden>
+        <div class="prize-header">
+          <div>
+            <h2>Prize Shop</h2>
+            <p id="prize-total">Your Points: 0</p>
+          </div>
+          <button id="back-to-game" class="primary-action" type="button">Back to Game</button>
+        </div>
+        <div id="prize-list" class="prize-list" aria-label="Available prizes"></div>
+        <h2 class="prize-bin-label">My Prizes</h2>
+        <div id="prize-bin" class="prize-bin"></div>
+      </section>
+    </main>
+
+    <div id="redeem-modal" class="redeem-modal" role="dialog" aria-modal="true" aria-labelledby="redeem-title">
+      <div class="redeem-box">
+        <h2 id="redeem-title">Redeem Prize?</h2>
+        <p id="redeem-reward" class="redeem-reward"></p>
+        <p id="redeem-cost" class="redeem-cost"></p>
+        <div class="redeem-actions">
+          <button id="redeem-yes" class="primary-action" type="button">Yes</button>
+          <button id="redeem-no" class="secondary-action" type="button">No</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
