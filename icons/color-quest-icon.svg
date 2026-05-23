@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#2474d4"/>
+  <path fill="#ffe05c" d="M0 350c62 34 128 51 198 51 126 0 227-46 314-132v131c0 62-50 112-112 112H112C50 512 0 462 0 400z"/>
+  <rect x="88" y="92" width="336" height="336" rx="42" fill="#ffffff"/>
+  <g stroke="#d7dfeb" stroke-width="10">
+    <path d="M172 92v336M256 92v336M340 92v336M88 176h336M88 260h336M88 344h336"/>
+  </g>
+  <rect x="98" y="102" width="64" height="64" rx="14" fill="#ef4d4d"/>
+  <rect x="182" y="102" width="64" height="64" rx="14" fill="#ffd84a"/>
+  <rect x="266" y="102" width="64" height="64" rx="14" fill="#47b96f"/>
+  <rect x="350" y="102" width="64" height="64" rx="14" fill="#4d95f0"/>
+  <rect x="98" y="186" width="64" height="64" rx="14" fill="#985fd3"/>
+  <rect x="182" y="186" width="64" height="64" rx="14" fill="#ffffff"/>
+  <rect x="266" y="186" width="64" height="64" rx="14" fill="#f38b36"/>
+  <rect x="350" y="186" width="64" height="64" rx="14" fill="#ffffff"/>
+  <rect x="98" y="270" width="64" height="64" rx="14" fill="#ffffff"/>
+  <rect x="182" y="270" width="64" height="64" rx="14" fill="#4d95f0"/>
+  <rect x="266" y="270" width="64" height="64" rx="14" fill="#ffffff"/>
+  <rect x="350" y="270" width="64" height="64" rx="14" fill="#f58cb5"/>
+  <rect x="98" y="354" width="64" height="64" rx="14" fill="#47b96f"/>
+  <rect x="182" y="354" width="64" height="64" rx="14" fill="#ffffff"/>
+  <rect x="266" y="354" width="64" height="64" rx="14" fill="#9b673d"/>
+  <rect x="350" y="354" width="64" height="64" rx="14" fill="#ffffff"/>
+  <g font-family="Trebuchet MS, Arial, sans-serif" font-weight="900" font-size="46" text-anchor="middle" fill="#17406f">
+    <text x="214" y="235">?</text>
+    <text x="382" y="235">5</text>
+    <text x="130" y="319">3</text>
+    <text x="298" y="319">1</text>
+    <text x="214" y="403">7</text>
+    <text x="382" y="403">2</text>
+  </g>
+  <circle cx="392" cy="120" r="58" fill="#ffffff" opacity=".92"/>
+  <path fill="#17406f" d="M389 79c-17 0-31 5-42 16l19 21c6-6 13-9 21-9 11 0 18 5 18 14 0 7-4 12-13 18-15 10-22 22-21 39h31c0-9 4-15 14-23 15-11 23-23 23-38 0-23-20-38-50-38zm-2 112c-12 0-20 8-20 19s8 19 20 19c13 0 21-8 21-19s-8-19-21-19z"/>
+</svg>

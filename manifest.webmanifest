@@ -1,0 +1,30 @@
+{
+  "name": "Color Quest",
+  "short_name": "Color Quest",
+  "description": "A color by number trivia game with math and science questions.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7fbff",
+  "theme_color": "#2474d4",
+  "icons": [
+    {
+      "src": "icons/color-quest-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/color-quest-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/color-quest-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
