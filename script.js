@@ -603,7 +603,7 @@ function gradeDeck(grade) {
 }
 
 function levelMultiplier(grade) {
-  return gradeOrder.indexOf(grade) + 1;
+  return (gradeOrder.indexOf(grade) + 1) * 2;
 }
 
 function gradeIndex(grade) {
